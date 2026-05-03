@@ -54,141 +54,162 @@ export default function Products() {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
+    <div className="max-w-7xl mx-auto animate-fade-in">
+      <div className="flex items-center justify-between mb-10">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">Products</h2>
-          <p className="text-gray-400 text-sm mt-1">{foods.length} items available</p>
+          <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Product Management</h2>
+          <div className="flex items-center gap-2 mt-2">
+            <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+            <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">{foods.length} items in inventory</p>
+          </div>
         </div>
         {role === 'ADMIN' && (
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-xl transition"
+            className={`px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-xl ${showForm ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-slate-900 text-white hover:bg-amber-600'}`}
           >
-            {showForm ? 'Cancel' : '+ Add Item'}
+            {showForm ? 'Cancel Operation' : '+ Add New Product'}
           </button>
         )}
       </div>
 
       {msg && (
-        <div className="mb-4 bg-green-100 text-green-700 px-4 py-3 rounded-xl text-sm font-medium">
+        <div className="mb-8 bg-green-500/10 text-green-400 border border-green-500/20 px-6 py-4 rounded-2xl text-sm font-black tracking-wide animate-bounce-in shadow-2xl">
+          <span className="mr-2">⚡</span>
           {msg}
         </div>
       )}
 
       {showForm && role === 'ADMIN' && (
-        <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
-          <h3 className="font-bold text-gray-800 mb-4">Add New Food Item</h3>
-          <div className="grid grid-cols-2 gap-4">
+        <div className="glass-panel rounded-[2.5rem] p-10 mb-10 border border-white/10 relative overflow-hidden animate-fade-in-up">
+           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full filter blur-3xl"></div>
+          <h3 className="font-black text-2xl text-white mb-8 tracking-tight flex items-center gap-3">
+             <span className="w-8 h-8 rounded-xl bg-amber-500 flex items-center justify-center text-sm italic">i</span>
+             Create Food Entry
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
             <div>
-              <label className="text-sm text-gray-600 font-medium">Name</label>
+              <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-1">Product Name</label>
               <input
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
-                className="w-full mt-1 px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-                placeholder="Food name"
+                className="w-full mt-2 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
+                placeholder="Delicious Dish..."
               />
             </div>
             <div>
-              <label className="text-sm text-gray-600 font-medium">Price (Rs.)</label>
+              <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-1">Price (LKR)</label>
               <input
                 value={form.price}
                 onChange={e => setForm({ ...form, price: e.target.value })}
                 type="number"
-                className="w-full mt-1 px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="w-full mt-2 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
                 placeholder="0.00"
               />
             </div>
             <div>
-              <label className="text-sm text-gray-600 font-medium">Category</label>
+              <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-1">Category Group</label>
               <select
                 value={form.categoryId}
                 onChange={e => setForm({ ...form, categoryId: e.target.value })}
-                className="w-full mt-1 px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="w-full mt-2 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all appearance-none"
               >
-                <option value="">Select category</option>
+                <option value="" className="bg-[#0b0f19] text-white">Select group...</option>
                 {categories.map((c: any) => (
-                  <option key={c.id} value={c.id}>{c.name}</option>
+                  <option key={c.id} value={c.id} className="bg-[#0b0f19] text-white">{c.name}</option>
                 ))}
               </select>
             </div>
             <div>
-              <label className="text-sm text-gray-600 font-medium">Status</label>
+              <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-1">Availability Status</label>
               <select
                 value={form.status}
                 onChange={e => setForm({ ...form, status: e.target.value })}
-                className="w-full mt-1 px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="w-full mt-2 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all appearance-none"
               >
-                <option value="AVAILABLE">Available</option>
-                <option value="OUT_OF_STOCK">Out of Stock</option>
+                <option value="AVAILABLE" className="bg-[#0b0f19] text-white">Available</option>
+                <option value="OUT_OF_STOCK" className="bg-[#0b0f19] text-white">Out of Stock</option>
               </select>
             </div>
-            <div className="col-span-2">
-              <label className="text-sm text-gray-600 font-medium">Image URL</label>
+            <div className="md:col-span-2">
+              <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-1">Image Presentation URL</label>
               <input
                 value={form.imageUrl}
                 onChange={e => setForm({ ...form, imageUrl: e.target.value })}
-                className="w-full mt-1 px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-                placeholder="https://images.unsplash.com/..."
+                className="w-full mt-2 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
+                placeholder="https://images.unsplash.com/path-to-quality-image"
               />
             </div>
           </div>
           <button
             onClick={handleAdd}
-            className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-xl transition"
+            className="mt-10 bg-white text-gray-900 hover:bg-amber-500 hover:text-white font-black px-12 py-5 rounded-2xl transition-all duration-300 shadow-2xl flex items-center gap-3 uppercase tracking-widest text-xs"
           >
-            Save Item
+            Deploy Product Entry
           </button>
         </div>
       )}
 
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="text-left px-5 py-3 text-gray-500 font-semibold">Photo</th>
-              <th className="text-left px-5 py-3 text-gray-500 font-semibold">Name</th>
-              <th className="text-left px-5 py-3 text-gray-500 font-semibold">Category</th>
-              <th className="text-left px-5 py-3 text-gray-500 font-semibold">Price</th>
-              <th className="text-left px-5 py-3 text-gray-500 font-semibold">Status</th>
-              {role === 'ADMIN' && <th className="text-left px-5 py-3 text-gray-500 font-semibold">Action</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {foods.map((food: any) => (
-              <tr key={food.id} className="border-t hover:bg-gray-50 transition">
-                <td className="px-5 py-3">
-                  <img
-                    src={food.imageUrl}
-                    alt={food.name}
-                    className="w-12 h-12 rounded-xl object-cover"
-                    onError={e => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100';
-                    }}
-                  />
-                </td>
-                <td className="px-5 py-3 font-semibold text-gray-800">{food.name}</td>
-                <td className="px-5 py-3 text-gray-500">{food.category?.name}</td>
-                <td className="px-5 py-3 text-orange-500 font-bold">Rs. {food.price.toFixed(2)}</td>
-                <td className="px-5 py-3">
-                  <span className={`text-xs font-semibold px-2 py-1 rounded-full ${food.status === 'AVAILABLE' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-500'}`}>
-                    {food.status}
-                  </span>
-                </td>
-                {role === 'ADMIN' && (
-                  <td className="px-5 py-3">
-                    <button
-                      onClick={() => handleDelete(food.id)}
-                      className="text-red-400 hover:text-red-600 font-semibold transition"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                )}
+      <div className="glass-panel rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-white/5 border-b border-white/5">
+                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Display</th>
+                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Product Identity</th>
+                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Category</th>
+                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Pricing</th>
+                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Inventory</th>
+                {role === 'ADMIN' && <th className="text-right px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Actions</th>}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {foods.map((food: any) => (
+                <tr key={food.id} className="hover:bg-white/5 transition-colors group">
+                  <td className="px-8 py-6">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:scale-105 transition-transform duration-500">
+                      <img
+                        src={food.imageUrl}
+                        alt={food.name}
+                        className="w-full h-full object-cover"
+                        onError={e => {
+                          (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100';
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                     <p className="font-black text-white group-hover:text-amber-400 transition-colors text-lg tracking-tight leading-tight pb-1">{food.name}</p>
+                     <p className="text-[10px] text-gray-600 font-bold uppercase tracking-[0.2em] mt-1">UID: {food.id}</p>
+                  </td>
+                  <td className="px-8 py-6">
+                    <span className="text-xs text-gray-400 font-black uppercase tracking-widest bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+                      {food.category?.name}
+                    </span>
+                  </td>
+                  <td className="px-8 py-6 text-amber-500 font-black text-lg tracking-tight">Rs. {food.price.toFixed(2)}</td>
+                  <td className="px-8 py-6">
+                    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${food.status === 'AVAILABLE' ? 'text-green-400 border-green-500/20 bg-green-500/10' : 'text-red-400 border-red-500/20 bg-red-500/10'}`}>
+                      <div className={`w-1.5 h-1.5 rounded-full ${food.status === 'AVAILABLE' ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
+                      {food.status.replace('_', ' ')}
+                    </div>
+                  </td>
+                  {role === 'ADMIN' && (
+                    <td className="px-8 py-6 text-right">
+                      <button
+                        onClick={() => handleDelete(food.id)}
+                        className="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-300 border border-red-500/10 hover:border-red-500/20 ml-auto"
+                        title="Delete Product"
+                      >
+                        🗑️
+                      </button>
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
