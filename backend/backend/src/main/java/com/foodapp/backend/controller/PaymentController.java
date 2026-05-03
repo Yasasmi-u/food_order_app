@@ -1,7 +1,6 @@
 package com.foodapp.backend.controller;
 
 import com.foodapp.backend.entity.*;
-import com.foodapp.backend.service.OrderService;
 import com.foodapp.backend.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,6 @@ public class PaymentController {
     @Autowired
     private PaymentService service;
 
-    @Autowired
-    private OrderService orderService;
 
     @PostMapping("/{orderId}")
     public Payment pay(@PathVariable Long orderId){

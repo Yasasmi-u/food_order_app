@@ -10,7 +10,6 @@ import com.foodapp.backend.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/cart")
@@ -50,13 +49,15 @@ public class CartController {
     // VIEW CART
     // =========================
     @GetMapping("/{userId}")
-    public List<CartItem> viewCart(@PathVariable Long userId) {
+    public java.util.Map<String, Object> viewCart(@PathVariable Long userId) {
 
         User user = userService.getUserById(userId);
 
         Cart cart = cartService.getCart(user);
 
-        return cartService.getItems(cart);
+        java.util.Map<String, Object> response = new java.util.HashMap<>();
+        response.put("cartItems", cartService.getItems(cart));
+        return response;
     }
 
     // =========================
