@@ -3,6 +3,7 @@ package com.foodapp.backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,7 @@ public class Category {
 
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<FoodItem> foodItems;
 }
