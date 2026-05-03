@@ -13,26 +13,35 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
   return token ? <>{children}</> : <Navigate to="/login" />;
 }
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/*"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/products" element={<Products />} />
+              </Routes>
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+    </Routes>
+  );
+}
+
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/*" element={
-            <PrivateRoute>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/menu" element={<Menu />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/orders" element={<Orders />} />
-                  <Route path="/products" element={<Products />} />
-                </Routes>
-              </Layout>
-            </PrivateRoute>
-          } />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </AuthProvider>
   );
