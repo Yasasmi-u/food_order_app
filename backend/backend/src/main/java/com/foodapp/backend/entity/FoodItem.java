@@ -18,5 +18,8 @@ public class FoodItem {
     private FoodStatus status;
 
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
+
+    private String imageUrl;
 }
