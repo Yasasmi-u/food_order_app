@@ -32,5 +32,5 @@ body {
 }
 
 .glass-panel {
-  @apply bg-[#0b0f19]/95 border border-white/10 backdrop-blur-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)];
+  @apply bg-white/70 border border-white/40 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
 }
