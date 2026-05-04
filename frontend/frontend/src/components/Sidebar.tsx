@@ -21,14 +21,14 @@ export default function Sidebar() {
   const filteredItems = navItems.filter(item => item.roles.includes(role || ''));
 
   return (
-    <div className={`w-64 min-h-screen glass-panel flex flex-col py-8 px-5 border-r z-10 transition-all duration-500 ${role === 'ADMIN' ? 'border-amber-500/20 shadow-[0_0_50px_rgba(245,158,11,0.1)]' : 'border-white/5'}`}>
+    <div className={`w-64 min-h-screen glass-panel flex flex-col py-8 px-5 border-r z-10 transition-all duration-500 ${role === 'ADMIN' ? 'border-amber-500/20 shadow-[0_0_50px_rgba(245,158,11,0.05)]' : 'border-slate-200'}`}>
       <div className="mb-12 px-2 flex flex-col items-center">
         <h1 className={`text-4xl font-black text-transparent bg-clip-text tracking-tighter drop-shadow-md italic py-1 ${role === 'ADMIN' ? 'bg-gradient-to-r from-amber-400 to-yellow-300' : 'bg-gradient-to-r from-amber-400 to-orange-400'}`}>
           foodie
         </h1>
-        <div className={`mt-4 px-4 py-1.5 rounded-full bg-white/5 border text-[10px] font-black uppercase tracking-widest shadow-inner flex items-center gap-2 ${role === 'ADMIN' ? 'border-amber-500/40 text-amber-300' : 'border-white/10 text-gray-400'}`}>
-          <div className={`w-2 h-2 rounded-full animate-pulse ${role === 'ADMIN' ? 'bg-amber-400' : 'bg-green-400'}`}></div>
-          {username} · <span className={role === 'ADMIN' ? 'text-amber-400' : 'text-amber-500'}>{role}</span>
+        <div className={`mt-4 px-4 py-1.5 rounded-full bg-slate-50 border text-[10px] font-black uppercase tracking-widest shadow-inner flex items-center gap-2 ${role === 'ADMIN' ? 'border-amber-500/40 text-amber-600' : 'border-slate-200 text-slate-500'}`}>
+          <div className={`w-2 h-2 rounded-full animate-pulse ${role === 'ADMIN' ? 'bg-amber-500' : 'bg-green-500'}`}></div>
+          {username} · <span className={role === 'ADMIN' ? 'text-amber-600' : 'text-amber-600'}>{role}</span>
         </div>
       </div>
 
@@ -44,7 +44,7 @@ export default function Sidebar() {
                 ? (role === 'ADMIN' 
                     ? 'bg-gradient-to-r from-amber-600 to-yellow-500 text-white shadow-[0_0_20px_rgba(217,119,6,0.4)] scale-[1.02]' 
                     : 'bg-gradient-to-r from-amber-500 to-orange-400 text-white shadow-[0_0_20px_rgba(245,158,11,0.4)] scale-[1.02]')
-                : 'text-gray-500 hover:bg-white/5 hover:text-white hover:scale-[1.02]'}`
+                : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900 hover:scale-[1.02]'}`
             }
           >
             <span className="text-xl drop-shadow-sm opacity-90">{item.icon}</span>
