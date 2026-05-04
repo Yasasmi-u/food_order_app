@@ -150,24 +150,24 @@ export default function Products() {
         </div>
       )}
 
-      <div className="glass-panel rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl">
+      <div className="glass-panel rounded-[2.5rem] border border-slate-200 overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-white/5 border-b border-white/5">
-                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Display</th>
-                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Product Identity</th>
-                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Category</th>
-                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Pricing</th>
-                <th className="text-left px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Inventory</th>
-                {role === 'ADMIN' && <th className="text-right px-8 py-6 text-gray-500 font-black uppercase tracking-widest text-[10px]">Actions</th>}
+              <tr className="bg-slate-50 border-b border-slate-200">
+                <th className="text-left px-8 py-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">Display</th>
+                <th className="text-left px-8 py-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">Product Identity</th>
+                <th className="text-left px-8 py-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">Category</th>
+                <th className="text-left px-8 py-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">Pricing</th>
+                <th className="text-left px-8 py-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">Inventory</th>
+                {role === 'ADMIN' && <th className="text-right px-8 py-6 text-slate-400 font-black uppercase tracking-widest text-[10px]">Actions</th>}
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-100">
               {foods.map((food: any) => (
-                <tr key={food.id} className="hover:bg-white/5 transition-colors group">
+                <tr key={food.id} className="hover:bg-slate-50 transition-colors group">
                   <td className="px-8 py-6">
-                    <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:scale-105 transition-transform duration-500">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md border border-slate-200 group-hover:scale-105 transition-transform duration-500">
                       <img
                         src={food.imageUrl}
                         alt={food.name}
@@ -179,18 +179,18 @@ export default function Products() {
                     </div>
                   </td>
                   <td className="px-8 py-6">
-                     <p className="font-black text-white group-hover:text-amber-400 transition-colors text-lg tracking-tight leading-tight pb-1">{food.name}</p>
-                     <p className="text-[10px] text-gray-600 font-bold uppercase tracking-[0.2em] mt-1">UID: {food.id}</p>
+                    <p className="font-black text-slate-900 group-hover:text-amber-600 transition-colors text-lg tracking-tight leading-tight pb-1">{food.name}</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-1">UID: {food.id}</p>
                   </td>
                   <td className="px-8 py-6">
-                    <span className="text-xs text-gray-400 font-black uppercase tracking-widest bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+                    <span className="text-xs text-slate-600 font-black uppercase tracking-widest bg-slate-100 px-4 py-2 rounded-xl border border-slate-200">
                       {food.category?.name}
                     </span>
                   </td>
-                  <td className="px-8 py-6 text-amber-500 font-black text-lg tracking-tight">Rs. {food.price.toFixed(2)}</td>
+                  <td className="px-8 py-6 text-amber-600 font-black text-lg tracking-tight">Rs. {food.price.toFixed(2)}</td>
                   <td className="px-8 py-6">
-                    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${food.status === 'AVAILABLE' ? 'text-green-400 border-green-500/20 bg-green-500/10' : 'text-red-400 border-red-500/20 bg-red-500/10'}`}>
-                      <div className={`w-1.5 h-1.5 rounded-full ${food.status === 'AVAILABLE' ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
+                    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${food.status === 'AVAILABLE' ? 'text-green-700 border-green-200 bg-green-50' : 'text-red-600 border-red-200 bg-red-50'}`}>
+                      <div className={`w-1.5 h-1.5 rounded-full ${food.status === 'AVAILABLE' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
                       {food.status.replace('_', ' ')}
                     </div>
                   </td>
@@ -198,7 +198,7 @@ export default function Products() {
                     <td className="px-8 py-6 text-right">
                       <button
                         onClick={() => handleDelete(food.id)}
-                        className="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-300 border border-red-500/10 hover:border-red-500/20 ml-auto"
+                        className="w-10 h-10 rounded-xl bg-red-50 text-red-500 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-300 border border-red-100 hover:border-red-500 ml-auto"
                         title="Delete Product"
                       >
                         🗑️
