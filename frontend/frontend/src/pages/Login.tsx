@@ -12,6 +12,15 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
+    if (!username.trim() || !password.trim()) {
+      setError('Identity and Keyphrase are required');
+      return;
+    }
+    if (password.length < 4) {
+      setError('Keyphrase must be at least 4 characters');
+      return;
+    }
+    
     try {
       setError('');
       if (isLogin) {

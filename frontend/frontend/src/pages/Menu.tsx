@@ -120,20 +120,20 @@ export default function Menu() {
                 </span>
               </div>
             </div>
-            <div className="p-6 md:p-8 flex flex-col flex-1 bg-[#0b0f19]">
+            <div className="p-6 md:p-8 flex flex-col flex-1 bg-white/40">
               <div className="flex-1">
-                <h3 className="font-bold text-lg md:text-xl text-white group-hover:text-amber-400 transition-colors leading-tight pb-1">{food.name}</h3>
-                <p className="text-amber-500 font-black mt-2 text-xl md:text-2xl tracking-tight">Rs. {food.price.toFixed(2)}</p>
+                <h3 className="font-bold text-lg md:text-xl text-slate-900 group-hover:text-amber-600 transition-colors leading-tight pb-1">{food.name}</h3>
+                <p className="text-amber-600 font-black mt-2 text-xl md:text-2xl tracking-tight">Rs. {food.price.toFixed(2)}</p>
               </div>
               <div className="mt-6 flex items-center justify-between gap-3">
-                <div className={`flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest ${food.status === 'AVAILABLE' ? 'text-green-400' : 'text-red-400'}`}>
-                  <div className={`w-1.5 h-1.5 rounded-full ${food.status === 'AVAILABLE' ? 'bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)]' : 'bg-red-400'}`}></div>
+                <div className={`flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest ${food.status === 'AVAILABLE' ? 'text-green-600' : 'text-red-600'}`}>
+                  <div className={`w-1.5 h-1.5 rounded-full ${food.status === 'AVAILABLE' ? 'bg-green-500 shadow-[0_0_8px_rgba(74,222,128,0.2)]' : 'bg-red-500'}`}></div>
                   {food.status === 'AVAILABLE' ? 'Available' : 'Sold Out'}
                 </div>
                 <button
                   disabled={food.status !== 'AVAILABLE' || adding === food.id}
                   onClick={() => handleAdd(food.id, food.name)}
-                  className="bg-white text-gray-900 hover:bg-amber-500 hover:text-white disabled:bg-gray-800 disabled:text-gray-600 font-black px-5 py-3 rounded-xl md:rounded-2xl transition-all duration-300 shadow-xl flex items-center gap-2 group/btn text-[10px] md:text-xs uppercase tracking-widest"
+                  className="bg-slate-900 text-white hover:bg-amber-600 disabled:bg-slate-200 disabled:text-slate-400 font-black px-5 py-3 rounded-xl md:rounded-2xl transition-all duration-300 shadow-xl flex items-center gap-2 group/btn text-[10px] md:text-xs uppercase tracking-widest"
                 >
                   {adding === food.id ? '...' : <><span className="text-lg">+</span> ADD</>}
                 </button>

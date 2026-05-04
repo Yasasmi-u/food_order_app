@@ -85,14 +85,14 @@ export default function Cart() {
       )}
 
       {items.length === 0 ? (
-        <div className="text-center py-32 glass-panel rounded-[3rem] border border-white/5 relative overflow-hidden group">
+        <div className="text-center py-32 glass-panel rounded-[3rem] border border-slate-100 relative overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           <div className="text-9xl mb-8 opacity-20 grayscale group-hover:grayscale-0 transition-all duration-700">🛒</div>
-          <p className="text-white text-3xl font-black tracking-tight">Your cart is empty</p>
-          <p className="text-gray-400 mt-2 font-medium">Ready to start your next food journey?</p>
+          <p className="text-slate-900 text-3xl font-black tracking-tight">Your cart is empty</p>
+          <p className="text-slate-500 mt-2 font-medium">Ready to start your next food journey?</p>
           <button 
              onClick={() => window.location.href = '/menu'}
-             className="mt-8 bg-white text-gray-900 font-black px-10 py-4 rounded-2xl hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-xl"
+             className="mt-8 bg-slate-900 text-white font-black px-10 py-4 rounded-2xl hover:bg-amber-600 transition-all duration-300 shadow-xl"
           >
             Explore Menu
           </button>
@@ -101,10 +101,10 @@ export default function Cart() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2 space-y-4">
             {items.map((item: any) => (
-              <div key={item.id} className="glass-panel rounded-[2rem] p-6 flex items-center justify-between group border border-white/5 hover:border-amber-500/20 transition-all duration-500">
+              <div key={item.id} className="glass-panel rounded-[2rem] p-6 flex items-center justify-between group border border-slate-100 hover:border-amber-500/20 transition-all duration-500">
                 <div className="flex items-center gap-6">
                   <div className="relative">
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-500">
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group-hover:scale-105 transition-transform duration-500">
                       <img 
                         src={item.foodItem?.imageUrl || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400'} 
                         className="w-full h-full object-cover"
@@ -116,18 +116,18 @@ export default function Cart() {
                     </div>
                   </div>
                   <div>
-                    <p className="font-bold text-xl text-white group-hover:text-amber-400 transition-colors leading-tight pb-1">{item.foodItem?.name}</p>
-                    <p className="text-gray-500 text-xs font-black uppercase tracking-widest mt-1">
+                    <p className="font-bold text-xl text-slate-900 group-hover:text-amber-600 transition-colors leading-tight pb-1">{item.foodItem?.name}</p>
+                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest mt-1">
                       {item.foodItem?.category?.name || 'Food'}
                     </p>
-                    <p className="text-amber-500 font-black text-lg mt-1">
+                    <p className="text-amber-600 font-black text-lg mt-1">
                       Rs. {(item.foodItem?.price || 0).toFixed(2)}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => handleRemove(item.id)}
-                  className="w-12 h-12 rounded-2xl bg-white/5 text-gray-500 hover:bg-red-500 hover:text-white flex items-center justify-center text-2xl font-light transition-all duration-300 border border-white/5 hover:border-red-500/20 shadow-lg"
+                  className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 hover:bg-red-500 hover:text-white flex items-center justify-center text-2xl font-light transition-all duration-300 border border-slate-200 hover:border-red-500/20 shadow-sm"
                 >
                   ×
                 </button>
@@ -135,22 +135,22 @@ export default function Cart() {
             ))}
           </div>
 
-          <div className="glass-panel rounded-[2.5rem] p-8 border border-white/10 sticky top-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
-            <h3 className="text-2xl font-black text-white mb-8 tracking-tight">Order Summary</h3>
+          <div className="glass-panel rounded-[2.5rem] p-8 border border-slate-200 sticky top-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] bg-white/80">
+            <h3 className="text-2xl font-black text-slate-900 mb-8 tracking-tight">Order Summary</h3>
             <div className="space-y-4 mb-8">
-              <div className="flex justify-between text-gray-400 font-bold uppercase tracking-widest text-[10px]">
+              <div className="flex justify-between text-slate-400 font-bold uppercase tracking-widest text-[10px]">
                 <span>Items Subtotal</span>
                 <span>Rs. {total.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-gray-400 font-bold uppercase tracking-widest text-[10px]">
+              <div className="flex justify-between text-slate-400 font-bold uppercase tracking-widest text-[10px]">
                 <span>Delivery Fee</span>
-                <span className="text-green-400 font-black">FREE</span>
+                <span className="text-green-600 font-black">FREE</span>
               </div>
-              <div className="h-px bg-white/10 my-6"></div>
+              <div className="h-px bg-slate-100 my-6"></div>
               <div className="flex justify-between items-end">
                 <div>
-                  <p className="text-gray-500 font-black uppercase tracking-[0.2em] text-[10px]">Grand Total</p>
-                  <p className="text-4xl font-black text-white tracking-tighter mt-1">
+                  <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px]">Grand Total</p>
+                  <p className="text-4xl font-black text-slate-900 tracking-tighter mt-1">
                     Rs. {total.toFixed(2)}
                   </p>
                 </div>
@@ -158,11 +158,11 @@ export default function Cart() {
             </div>
             <button
               onClick={handleOrder}
-              className="w-full bg-white text-gray-900 font-black py-5 rounded-[1.5rem] shadow-xl hover:bg-amber-500 hover:text-white hover:-translate-y-1 transition-all duration-500 text-lg uppercase tracking-widest"
+              className="w-full bg-slate-900 text-white font-black py-5 rounded-[1.5rem] shadow-xl hover:bg-amber-600 hover:-translate-y-1 transition-all duration-500 text-lg uppercase tracking-widest"
             >
               Confirm Order
             </button>
-            <p className="text-[9px] text-gray-500 text-center mt-6 uppercase tracking-widest font-black opacity-50">
+            <p className="text-[9px] text-slate-400 text-center mt-6 uppercase tracking-widest font-black opacity-50">
               Secure Checkout · Fast Delivery
             </p>
           </div>

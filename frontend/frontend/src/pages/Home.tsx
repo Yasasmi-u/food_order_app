@@ -44,11 +44,11 @@ export default function Home() {
         </div>
         
         {/* Floating Accent - Hidden on small mobile */}
-        <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 hidden sm:flex items-center gap-4 md:gap-6 glass-panel p-4 md:p-6 rounded-2xl md:rounded-3xl border-white/5 animate-bounce-slow bg-[#0b0f19]/80 shadow-2xl scale-75 md:scale-100">
+        <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 hidden sm:flex items-center gap-4 md:gap-6 glass-panel p-4 md:p-6 rounded-2xl md:rounded-3xl border-slate-200 animate-bounce-slow bg-white/70 shadow-2xl scale-75 md:scale-100">
           <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-amber-500 flex items-center justify-center text-xl md:text-2xl shadow-lg">🍕</div>
           <div className="text-left">
-            <p className="text-white font-black text-sm md:text-base">Daily Special</p>
-            <p className="text-gray-400 text-[8px] md:text-[9px] font-black uppercase tracking-widest">20% Off Today</p>
+            <p className="text-slate-900 font-black text-sm md:text-base">Daily Special</p>
+            <p className="text-slate-500 text-[8px] md:text-[9px] font-black uppercase tracking-widest">20% Off Today</p>
           </div>
         </div>
       </section>
