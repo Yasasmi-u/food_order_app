@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login, signup } from '../api/auth';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.png';
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -46,6 +47,10 @@ export default function Login() {
 
       <div className="glass-panel rounded-[3rem] p-12 w-full max-w-md relative z-10 border border-slate-200 shadow-2xl">
         <div className="text-center mb-10">
+          <div className="w-24 h-24 mx-auto mb-6 relative">
+            <div className="absolute inset-0 bg-amber-500 rounded-full blur-[30px] opacity-20 animate-pulse"></div>
+            <img src={logo} className="w-full h-full object-contain relative z-10 drop-shadow-2xl" alt="Logo" />
+          </div>
           <h1 className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400 tracking-tighter italic pb-2">foodie</h1>
           <p className="text-slate-500 mt-3 text-sm font-black uppercase tracking-[0.3em]">Premium Ordering</p>
         </div>

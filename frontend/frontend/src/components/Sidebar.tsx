@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.png';
 
 export default function Sidebar() {
   const { logout, username, role } = useAuth();
@@ -23,6 +24,10 @@ export default function Sidebar() {
   return (
     <div className={`w-64 min-h-screen glass-panel flex flex-col py-8 px-5 border-r z-10 transition-all duration-500 ${role === 'ADMIN' ? 'border-amber-500/20 shadow-[0_0_50px_rgba(245,158,11,0.05)]' : 'border-slate-200'}`}>
       <div className="mb-12 px-2 flex flex-col items-center">
+        <div className="w-20 h-20 mb-4 relative">
+          <div className="absolute inset-0 bg-amber-500 rounded-full blur-[20px] opacity-20 animate-pulse"></div>
+          <img src={logo} className="w-full h-full object-contain relative z-10 drop-shadow-2xl" alt="Logo" />
+        </div>
         <h1 className={`text-4xl font-black text-transparent bg-clip-text tracking-tighter drop-shadow-md italic py-1 ${role === 'ADMIN' ? 'bg-gradient-to-r from-amber-400 to-yellow-300' : 'bg-gradient-to-r from-amber-400 to-orange-400'}`}>
           foodie
         </h1>
